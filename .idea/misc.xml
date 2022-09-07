@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/FURQAN/Furqan/UNI/Semester 6/Mobile Development/MAD_LAB/app/src/main/res/layout/activity_main.xml" value="0.3368421052631579" />
+        <entry key="..\:/FURQAN/Furqan/UNI/Semester 6/Mobile Development/MAD_LAB/app/src/main/res/layout/activity_login.xml" value="0.3368421052631579" />
+        <entry key="..\:/FURQAN/Furqan/UNI/Semester 6/Mobile Development/MAD_LAB/app/src/main/res/layout/activity_main.xml" value="0.2921195652173913" />
+        <entry key="..\:/FURQAN/Furqan/UNI/Semester 6/Mobile Development/MAD_LAB/app/src/main/res/layout/activity_quiz.xml" value="0.25087719298245614" />
         <entry key="..\:/Users/samra/AndroidStudioProjects/MAD_LAB/app/src/main/res/layout/activity_main.xml" value="0.25" />
       </map>
     </option>
