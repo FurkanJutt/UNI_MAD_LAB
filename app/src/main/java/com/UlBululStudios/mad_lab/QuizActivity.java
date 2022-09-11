@@ -18,7 +18,7 @@ public class QuizActivity extends AppCompatActivity {
             new Questions(R.string.q_5, true),
     };
 
-    private TextView tvQuestion;
+    private TextView tvQuestion, tvQuestionHeading;
     private Button btnWrong, btnCorrect, btnPrev, btnNext;
 
     private int currentIndex = 0;
@@ -32,6 +32,7 @@ public class QuizActivity extends AppCompatActivity {
         // initializing variables with views
 
         tvQuestion = findViewById(R.id.tv_question);
+        tvQuestionHeading = findViewById(R.id.tv_question_heading);
         btnWrong = findViewById(R.id.btn_wrong);
         btnCorrect = findViewById(R.id.btn_correct);
         btnPrev = findViewById(R.id.btn_prev);
@@ -63,6 +64,7 @@ public class QuizActivity extends AppCompatActivity {
             public void onClick(View view) {
                 ValidateAnswer(selectedAnswer);
                 currentIndex = (currentIndex+1) % questions.length;
+                tvQuestionHeading.setText("CurrentIndex: "+currentIndex);
                 int question = questions[currentIndex].getQuestionId();
                 tvQuestion.setText(question);
             }
@@ -72,7 +74,10 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 ValidateAnswer(selectedAnswer);
-                currentIndex = (currentIndex-1) % questions.length;
+
+                currentIndex=questions.length;
+                currentIndex = (currentIndex-1)%questions.length;
+                tvQuestionHeading.setText("CurrentIndex: "+currentIndex);
                 int question = questions[currentIndex].getQuestionId();
                 tvQuestion.setText(question);
             }
