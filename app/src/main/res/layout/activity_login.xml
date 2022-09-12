@@ -1,35 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context=".LoginActivity">
 
     <TextView
+        android:id="@+id/lbl_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Login"
         android:textSize="20dp"
+        android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:paddingBottom="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
         />
 
     <EditText
         android:id="@+id/et_Username"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/lbl_login"
+        android:layout_centerHorizontal="true"
         android:hint="Username"
         android:textSize="20dp"
-        android:paddingBottom="20dp"
+        android:layout_marginBottom="20dp"
         />
 
     <EditText
         android:id="@+id/et_Password"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_Username"
+        android:layout_centerHorizontal="true"
         android:hint="Password"
         android:textSize="20dp"
         android:paddingBottom="20dp"
@@ -39,6 +44,8 @@
         android:id="@+id/btn_Login"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/et_Password"
+        android:layout_centerHorizontal="true"
         android:text="Login"
         android:textSize="20dp"
         />
@@ -47,6 +54,8 @@
         android:id="@+id/btn_IDcamera"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_Login"
+        android:layout_centerHorizontal="true"
         android:text="Open camera to scan ID"
         />
 
@@ -54,8 +63,21 @@
         android:id="@+id/btn_Cancle"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/btn_IDcamera"
+        android:layout_centerHorizontal="true"
         android:text="Cancle"
         android:textSize="20dp"
         />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_test_show"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Quiz ->"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:layout_marginRight="20dp"
+        />
+
+</RelativeLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TestActivity">
+
+    <TextView
+        android:id="@+id/lbl_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:text="Quiz 1"
+        android:textSize="20dp"
+        android:textColor="@android:color/holo_red_dark"
+        android:layout_marginBottom="20dp"
+        />
+
+    <TextView
+        android:id="@+id/tv_roll_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/lbl_test"
+        android:text="BCSM-S20-045"
+        android:textSize="20dp"
+        android:layout_marginBottom="100dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/field_btn123"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_roll_num"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_button1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button 1"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:id="@+id/btn_button2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_button1"
+            android:text="button 2"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:id="@+id/btn_button3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_button2"
+            android:text="button 3"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/field_btn45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/field_btn123"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_button4"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="button 4"
+            android:textSize="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:id="@+id/btn_button5"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_button4"
+            android:text="button 5"
+            android:textSize="20dp"
+            />
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/btn_button6"
+        android:layout_width="370dp"
+        android:layout_height="wrap_content"
+        android:text="button 6"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/field_btn45"
+        />
+
+    <RelativeLayout
+        android:id="@+id/field_btn78"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/btn_button6"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_button7"
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="button 7"
+            android:textSize="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:layout_width="175dp"
+            android:layout_height="wrap_content"
+            android:text="button 8"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/btn_button7"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/field_btn91011"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/field_btn78"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp">
+
+        <Button
+            android:id="@+id/btn_button9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="button 9"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:id="@+id/btn_button10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_button9"
+            android:text="button X"
+            android:layout_marginRight="20dp"
+            />
+        <Button
+            android:id="@+id/btn_button11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/btn_button10"
+            android:text="button II"
+            />
+
+    </RelativeLayout>
+
+</RelativeLayout>

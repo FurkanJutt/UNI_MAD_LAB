@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private Button btnIdCamera, btnLogin, btnCancle;
+    private Button btnIdCamera, btnLogin, btnCancle, btnTestShow;
 
     private final int CAPTURE_IMAGE = 101;
 
@@ -29,6 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         btnIdCamera = findViewById(R.id.btn_IDcamera);
         btnLogin = findViewById(R.id.btn_Login);
         btnCancle = findViewById(R.id.btn_Cancle);
+        btnTestShow = findViewById(R.id.btn_test_show);
 
         String strUsername = getIntent().getStringExtra("Username");
 
@@ -65,6 +66,14 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.exit(0);
+            }
+        });
+
+        btnTestShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent testActivity = new Intent(LoginActivity.this, TestActivity.class);
+                startActivity(testActivity);
             }
         });
     }
