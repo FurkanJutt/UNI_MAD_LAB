@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".QuizActivity">
+
+    <TextView
+        android:id="@+id/tv_question_heading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:text="Question"
+        android:textSize="20dp" />
+
+    <TextView
+        android:id="@+id/tv_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_question_heading"
+        android:layout_centerHorizontal="true"
+        android:text="Question"
+        android:textSize="20dp"
+        android:layout_marginBottom="40dp"
+        />
+
+    <RelativeLayout
+        android:id="@+id/field_ans_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_question"
+        android:layout_marginBottom="20dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_wrong"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Wrong"
+            android:textSize="20dp"
+            android:layout_marginRight="50dp"
+            />
+
+        <Button
+            android:id="@+id/btn_correct"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Correct"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/btn_wrong"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/field_ans_btn"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Prev"
+            android:textSize="20dp"
+            android:layout_marginRight="40dp"
+            />
+
+        <Button
+            android:id="@+id/btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Next"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/btn_prev"
+            />
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>

@@ -1,8 +1,13 @@
 package com.UlBululStudios.mad_lab;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.PersistableBundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -24,10 +29,18 @@ public class QuizActivity extends AppCompatActivity {
     private int currentIndex = 0;
     boolean selectedAnswer = false;
 
+    public static final String KEY = "Index_Key";
+
+    int clickCount = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
+
+        if (savedInstanceState != null) {
+            Log.d("QuizActivity:", "Saved Instance Called");
+            currentIndex = savedInstanceState.getInt(KEY, 0);
+        }
 
         // initializing variables with views
 
@@ -43,6 +56,25 @@ public class QuizActivity extends AppCompatActivity {
         int question = questions[currentIndex].getQuestionId();
         tvQuestion.setText(question);
 
+
+        tvQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickCount++;
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        if(clickCount == 2){
+                            Intent cheatActivity = new Intent(QuizActivity.this, CheatActivity.class);
+                            cheatActivity.putExtra("ansToQues", questions[currentIndex].getAnswer());
+                            startActivity(cheatActivity);
+                        }
+                        clickCount = 0;
+                    }
+                }, 500);
+            }
+        });
 
 
         btnWrong.setOnClickListener(new View.OnClickListener() {
@@ -73,15 +105,25 @@ public class QuizActivity extends AppCompatActivity {
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ValidateAnswer(selectedAnswer);
-
                 currentIndex=questions.length;
-                currentIndex = (currentIndex-1)%questions.length;
-                tvQuestionHeading.setText("CurrentIndex: "+currentIndex);
+                currentIndex = (currentIndex-5) % questions.length;
+                tvQuestionHeading.setText("prevCurrentIndex: "+currentIndex);
                 int question = questions[currentIndex].getQuestionId();
                 tvQuestion.setText(question);
             }
         });
+    }
+
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        Log.d("QuizActivity:", "Instance Saved");
+        outState.putInt(KEY, currentIndex);
+    }
+
+    static boolean stdCheat;
+    public static void DidStdCheat(boolean cheatResult){
+        stdCheat = cheatResult;
     }
 
     private void ValidateAnswer(boolean ans){
@@ -89,10 +131,15 @@ public class QuizActivity extends AppCompatActivity {
 
         String floatingAnswer;
 
-        if (ans == answer){
-            floatingAnswer = "Answer is Correct!";
+        if(!stdCheat){
+            if (ans == answer){
+                floatingAnswer = "Answer is Correct!";
+            }else{
+                floatingAnswer = "Answer is InCorrect!";
+            }
         }else{
-            floatingAnswer = "Answer is InCorrect!";
+            floatingAnswer = "Tsk! Tsk! Tsk! Shame on you for Cheating!!!";
+            stdCheat = false;
         }
 
         Toast.makeText(this, floatingAnswer, Toast.LENGTH_SHORT).show();

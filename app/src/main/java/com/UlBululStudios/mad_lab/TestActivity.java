@@ -17,7 +17,7 @@ public class TestActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_test);
 
         tvRollNum = findViewById(R.id.tv_roll_num);
         btnButton6 = findViewById(R.id.btn_button6);

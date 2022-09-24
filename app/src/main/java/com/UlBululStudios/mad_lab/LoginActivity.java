@@ -1,11 +1,13 @@
 package com.UlBululStudios.mad_lab;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
@@ -18,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnIdCamera, btnLogin, btnCancle, btnTestShow;
 
     private final int CAPTURE_IMAGE = 101;
+    public static final String KEY = "key_index";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,5 +79,10 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(testActivity);
             }
         });
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
     }
 }
