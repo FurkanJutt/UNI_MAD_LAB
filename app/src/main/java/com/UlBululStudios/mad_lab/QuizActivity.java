@@ -94,9 +94,10 @@ public class QuizActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 ValidateAnswer(selectedAnswer);
+                tvQuestionHeading.setText("cIdx: "+currentIndex+ ", qLth: "+questions.length);
                 currentIndex = (currentIndex+1) % questions.length;
-                tvQuestionHeading.setText("CurrentIndex: "+currentIndex);
                 int question = questions[currentIndex].getQuestionId();
                 tvQuestion.setText(question);
             }
@@ -105,9 +106,7 @@ public class QuizActivity extends AppCompatActivity {
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentIndex=questions.length;
-                currentIndex = (currentIndex-5) % questions.length;
-                tvQuestionHeading.setText("prevCurrentIndex: "+currentIndex);
+                currentIndex = (currentIndex+4) % questions.length;
                 int question = questions[currentIndex].getQuestionId();
                 tvQuestion.setText(question);
             }
@@ -139,7 +138,6 @@ public class QuizActivity extends AppCompatActivity {
             }
         }else{
             floatingAnswer = "Tsk! Tsk! Tsk! Shame on you for Cheating!!!";
-            stdCheat = false;
         }
 
         Toast.makeText(this, floatingAnswer, Toast.LENGTH_SHORT).show();
