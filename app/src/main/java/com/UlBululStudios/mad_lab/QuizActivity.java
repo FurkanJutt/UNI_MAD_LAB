@@ -95,20 +95,31 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ValidateAnswer(selectedAnswer);
-                tvQuestionHeading.setText("cIdx: "+currentIndex+ ", qLth: "+questions.length);
-                currentIndex = (currentIndex+1) % questions.length;
-                int question = questions[currentIndex].getQuestionId();
-                tvQuestion.setText(question);
+
+                //currentIndex = (currentIndex+1) % questions.length;
+                currentIndex = (currentIndex+1);
+                if(currentIndex<questions.length){
+
+                    ValidateAnswer(selectedAnswer);
+                    int question = questions[currentIndex].getQuestionId();
+                    tvQuestion.setText(question);
+                }else{
+                    tvQuestionHeading.setText("Quiz Completed!");
+                }
+
             }
         });
 
         btnPrev.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                currentIndex = (currentIndex+4) % questions.length;
-                int question = questions[currentIndex].getQuestionId();
-                tvQuestion.setText(question);
+                //currentIndex = (currentIndex+4) % questions.length;
+
+                if(currentIndex>0){
+                    currentIndex = (currentIndex-1);
+                    int question = questions[currentIndex].getQuestionId();
+                    tvQuestion.setText(question);
+                }
             }
         });
     }
