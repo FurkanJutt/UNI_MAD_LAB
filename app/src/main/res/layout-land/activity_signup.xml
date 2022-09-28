@@ -6,13 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <Button
+        android:id="@+id/btn_back_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="back"
+        />
+
     <TextView
         android:id="@+id/tv_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
         android:text="Sign Up"
         android:textSize="20dp"
         android:textStyle="bold" />
@@ -36,10 +46,20 @@
         android:textSize="20dp"
         />
 
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/et_Password"
+        android:hint="Password"
+        android:textSize="20dp"
+        />
+
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_Password"
+        android:layout_below="@id/et_confirm_password"
         android:layout_centerHorizontal="true"
         android:id="@+id/field_gender">
 
@@ -49,7 +69,7 @@
             android:layout_height="wrap_content"
             android:text="Gender"
             android:textSize="20dp"
-            android:layout_marginRight="85dp"
+            android:layout_marginEnd="85dp"
             android:layout_centerVertical="true"
             />
 
@@ -57,16 +77,16 @@
             android:id="@+id/rb_male"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/label_gender"
+            android:layout_toEndOf="@id/label_gender"
             android:text="Male"
-            android:layout_marginRight="35dp"
+            android:layout_marginEnd="35dp"
             />
 
         <RadioButton
             android:id="@+id/rb_female"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/rb_male"
+            android:layout_toEndOf="@id/rb_male"
             android:text="Female"
             />
 
@@ -86,39 +106,40 @@
             android:layout_centerVertical="true"
             android:text="Marital Status"
             android:textSize="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginEnd="20dp"
             />
 
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Married"
-            android:layout_toRightOf="@+id/lbl_marital_status"
+            android:layout_toEndOf="@+id/lbl_marital_status"
             />
 
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/btn_SignUp"
+    <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Sign up"
-        android:textSize="20dp"
         android:layout_below="@+id/field_marital_status"
-        />
-
-    <Button
-        android:id="@+id/btn_Cancle"
-        android:layout_width="350dp"
-        android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="Cancle"
-        android:textSize="20dp"
-        android:layout_below="@+id/btn_SignUp"
-        />
+        android:id="@+id/field_buttons">
+        <Button
+            android:id="@+id/btn_SignUp"
+            android:layout_width="230dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/btn_IDcamera"
+            android:text="Sign up"
+            android:textSize="20dp" />
 
-
+        <Button
+            android:id="@+id/btn_IDcamera"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:text="Scan ID"
+            />
+    </RelativeLayout>
 
 
 </RelativeLayout>

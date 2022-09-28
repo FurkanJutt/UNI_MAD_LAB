@@ -17,9 +17,9 @@ import android.widget.TextView;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private Button btnIdCamera, btnLogin, btnCancle, btnTestShow;
+    private Button btnLogin, btnCancle, btnTestShow;
+    private TextView btnSignUp;
 
-    private final int CAPTURE_IMAGE = 101;
     public static final String KEY = "key_index";
 
     @Override
@@ -29,18 +29,19 @@ public class LoginActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.et_Username);
         etPassword = findViewById(R.id.et_Password);
-        btnIdCamera = findViewById(R.id.btn_IDcamera);
         btnLogin = findViewById(R.id.btn_Login);
         btnCancle = findViewById(R.id.btn_Cancle);
+        btnSignUp = findViewById(R.id.btn_signUp);
         btnTestShow = findViewById(R.id.btn_test_show);
 
-        String strUsername = getIntent().getStringExtra("Username");
-
-        etUsername.setText(strUsername);
+//        String strUsername = getIntent().getStringExtra("Username");
+//
+//        etUsername.setText(strUsername);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String strUsername = etUsername.getText().toString();
                 String strPassword = etPassword.getText().toString();
 
                 if (!strUsername.isEmpty() && !strPassword.isEmpty()) {
@@ -56,12 +57,11 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnIdCamera.setOnClickListener(new View.OnClickListener() {
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent cameraIntent = new Intent();
-                cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
-                startActivityForResult(cameraIntent, CAPTURE_IMAGE);
+                Intent signUpActivity = new Intent(LoginActivity.this, SignUpActivity.class);
+                startActivity(signUpActivity);
             }
         });
 

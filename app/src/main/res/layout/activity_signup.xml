@@ -6,19 +6,28 @@
     android:layout_height="match_parent"
     tools:context=".SignUpActivity">
 
+    <Button
+        android:id="@+id/btn_back_to_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:text="back"
+        />
+
     <TextView
         android:id="@+id/tv_signUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
         android:text="Sign Up"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginBottom="100dp"
-        android:layout_marginTop="100dp"
-        />
+        android:textStyle="bold" />
 
     <EditText
         android:id="@+id/et_Username"
@@ -35,17 +44,26 @@
         android:id="@+id/et_Password"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/et_Username"
-        android:hint="Password"
-        android:textSize="20dp"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
-        />
+        android:hint="Password"
+        android:textSize="20dp" />
+
+    <EditText
+        android:id="@+id/et_confirm_password"
+        android:layout_width="352dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_Password"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
+        android:hint="Confirm Password"
+        android:textSize="20dp" />
 
     <RelativeLayout
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/et_Password"
+        android:layout_below="@id/et_confirm_password"
         android:layout_centerHorizontal="true"
         android:id="@+id/field_gender">
 
@@ -108,23 +126,18 @@
         android:id="@+id/btn_SignUp"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/field_marital_status"
         android:layout_centerHorizontal="true"
         android:text="Sign up"
-        android:textSize="20dp"
-        android:layout_below="@+id/field_marital_status"
-        />
+        android:textSize="20dp" />
 
     <Button
-        android:id="@+id/btn_Cancle"
+        android:id="@+id/btn_IDcamera"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:text="Cancle"
-        android:textSize="20dp"
+        android:text="Open camera to scan ID"
         android:layout_below="@+id/btn_SignUp"
+        android:layout_centerHorizontal="true"
         />
-
-
-
 
 </RelativeLayout>

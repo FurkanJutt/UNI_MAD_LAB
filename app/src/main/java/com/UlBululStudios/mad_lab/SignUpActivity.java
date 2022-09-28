@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,18 +16,27 @@ public class SignUpActivity extends AppCompatActivity {
     //Variables
     private EditText etUserName, etPassword;
     private RadioButton rbMale, rbFemale;
-    private Button btnSignUp, btnCancle;
+    private Button btnIdCamera, btnSignUp, btnBackToLogin;
 
+    private final int CAPTURE_IMAGE = 101;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
+        btnBackToLogin = findViewById(R.id.btn_back_to_login);
         etUserName = findViewById(R.id.et_Username);
         etPassword = findViewById(R.id.et_Password);
         btnSignUp = findViewById(R.id.btn_SignUp);
-        btnCancle = findViewById(R.id.btn_Cancle);
+        btnIdCamera = findViewById(R.id.btn_IDcamera);
+
+        btnBackToLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignUpActivity.this.finish();
+            }
+        });
 
         etUserName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,10 +72,12 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        btnCancle.setOnClickListener(new View.OnClickListener() {
+        btnIdCamera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                System.exit(0);
+                Intent cameraIntent = new Intent();
+                cameraIntent.setAction(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAPTURE_IMAGE);
             }
         });
     }
