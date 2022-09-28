@@ -40,6 +40,7 @@
         android:hint="Password"
         android:paddingBottom="20dp"
         android:textSize="20dp"
+        android:inputType="textPassword"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/et_Username" />
@@ -66,17 +67,32 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_Login" />
 
     <TextView
-        android:id="@+id/btn_signUp"
+        android:id="@+id/btn_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textColor="@android:color/holo_blue_bright"
-        android:text="Create New ID"
+        android:layout_marginTop="20dp"
+        android:text="Forgot Password?"
+        android:textColor="@android:color/darker_gray"
         android:textSize="20dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_Cancle"
-        />
+        app:layout_constraintStart_toStartOf="@+id/btn_Cancle"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Cancle" />
+
+    <TextView
+        android:id="@+id/btn_signUp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Create New ID"
+        android:textColor="@android:color/holo_blue_bright"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/btn_Cancle"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_forgot_password"
+        app:layout_constraintTop_toBottomOf="@+id/btn_Cancle" />
 
     <Button
         android:id="@+id/btn_test_show"

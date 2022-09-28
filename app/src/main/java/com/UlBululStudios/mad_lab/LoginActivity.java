@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -20,7 +21,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button btnLogin, btnCancle, btnTestShow;
     private TextView btnSignUp;
 
-    public static final String KEY = "key_index";
+    private final String CREDENTIAL_SHARED_PREF = "credential_shared_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,18 +42,28 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                SharedPreferences credentials = getSharedPreferences(CREDENTIAL_SHARED_PREF, MODE_PRIVATE);
+                String prefUsername = credentials.getString("Username", null);
+                String prefPassword = credentials.getString("Password", null);
+
                 String strUsername = etUsername.getText().toString();
                 String strPassword = etPassword.getText().toString();
 
-                if (!strUsername.isEmpty() && !strPassword.isEmpty()) {
-                    Intent quizActivity = new Intent(LoginActivity.this, QuizActivity.class);
-                    startActivity(quizActivity);
+                if (!strUsername.isEmpty() && !prefUsername.isEmpty() && strUsername.equalsIgnoreCase(prefUsername)) {
+                    if(!strPassword.isEmpty() && !prefPassword.isEmpty() && strPassword.equalsIgnoreCase(prefPassword)){
+                        Intent quizActivity = new Intent(LoginActivity.this, QuizActivity.class);
+                        startActivity(quizActivity);
+                    }else{
+                        etPassword.setText("");
+                        etPassword.setHintTextColor(Color.parseColor("red"));
+                        etPassword.setHint("Incorrect Password!");
+                    }
                 }
                 else{
-                    etUsername.setTextColor(Color.parseColor("red"));
-                    etUsername.setText("Field Cannot be empty");
-                    etPassword.setTextColor(Color.parseColor("red"));
-                    etPassword.setText("Field Cannot be empty");
+                    etUsername.setHintTextColor(Color.parseColor("red"));
+                    etUsername.setHint("Field Cannot be empty");
+                    etPassword.setHintTextColor(Color.parseColor("red"));
+                    etPassword.setHint("Field Cannot be empty");
                 }
             }
         });
@@ -79,10 +90,5 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(testActivity);
             }
         });
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
-        super.onSaveInstanceState(savedInstanceState);
     }
 }

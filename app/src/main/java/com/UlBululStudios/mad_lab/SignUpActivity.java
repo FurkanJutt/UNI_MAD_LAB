@@ -3,6 +3,7 @@ package com.UlBululStudios.mad_lab;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,15 +11,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 public class SignUpActivity extends AppCompatActivity {
 
     //Variables
-    private EditText etUserName, etPassword;
+    private EditText etUserName, etPassword, etConfirmPassword;
     private RadioButton rbMale, rbFemale;
     private Button btnIdCamera, btnSignUp, btnBackToLogin;
 
     private final int CAPTURE_IMAGE = 101;
+    private final String CREDENTIAL_SHARED_PREF = "credential_shared_pref";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +31,7 @@ public class SignUpActivity extends AppCompatActivity {
         btnBackToLogin = findViewById(R.id.btn_back_to_login);
         etUserName = findViewById(R.id.et_Username);
         etPassword = findViewById(R.id.et_Password);
+        etConfirmPassword = findViewById(R.id.et_confirm_password);
         btnSignUp = findViewById(R.id.btn_SignUp);
         btnIdCamera = findViewById(R.id.btn_IDcamera);
 
@@ -38,36 +42,32 @@ public class SignUpActivity extends AppCompatActivity {
             }
         });
 
-        etUserName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etUserName.setText("");
-            }
-        });
-
-        etPassword.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                etPassword.setText("");
-            }
-        });
-
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String strUsername = etUserName.getText().toString();
                 String strPassword = etPassword.getText().toString();
+                String strConfirmPassword = etConfirmPassword.getText().toString();
 
-                if (!strUsername.isEmpty() && !strPassword.isEmpty()) {
-                    Intent loginActivity = new Intent(SignUpActivity.this, LoginActivity.class);
-                    loginActivity.putExtra("Username", strUsername);
-                    startActivity(loginActivity);
+                if (!strUsername.isEmpty() && !strPassword.isEmpty() && !strConfirmPassword.isEmpty()) {
+                    if(!strConfirmPassword.equals(strPassword)){
+                        Toast.makeText(SignUpActivity.this, "Password mismatched!", Toast.LENGTH_SHORT).show();
+                    }else{
+                        SharedPreferences credentials = getSharedPreferences(CREDENTIAL_SHARED_PREF, MODE_PRIVATE);
+                        SharedPreferences.Editor editor = credentials.edit();
+                        editor.putString("Username", strUsername);
+                        editor.putString("Password", strPassword);
+                        editor.commit();
+                        Toast.makeText(SignUpActivity.this, "SignUp Successful, Go back to Login!", Toast.LENGTH_SHORT).show();
+                    }
                 }
                 else{
-                    etUserName.setTextColor(Color.parseColor("red"));
-                    etUserName.setText("Field Cannot be empty");
-                    etPassword.setTextColor(Color.parseColor("red"));
-                    etPassword.setText("Field Cannot be empty");
+                    etUserName.setHintTextColor(Color.parseColor("red"));
+                    etUserName.setHint("Field Cannot be empty");
+                    etPassword.setHintTextColor(Color.parseColor("red"));
+                    etPassword.setHint("Field Cannot be empty");
+                    etConfirmPassword.setHintTextColor(Color.parseColor("red"));
+                    etConfirmPassword.setHint("Field Cannot be empty");
                 }
             }
         });

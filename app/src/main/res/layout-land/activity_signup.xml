@@ -40,10 +40,11 @@
         android:id="@+id/et_Password"
         android:layout_width="352dp"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@id/et_Username"
+        android:layout_centerHorizontal="true"
         android:hint="Password"
         android:textSize="20dp"
+        android:inputType="textPassword"
         />
 
     <EditText
@@ -52,8 +53,9 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/et_Password"
-        android:hint="Password"
+        android:hint="Confirm Password"
         android:textSize="20dp"
+        android:inputType="textPassword"
         />
 
     <RelativeLayout
@@ -124,12 +126,13 @@
         android:layout_below="@+id/field_marital_status"
         android:layout_centerHorizontal="true"
         android:id="@+id/field_buttons">
+
         <Button
             android:id="@+id/btn_SignUp"
             android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_toEndOf="@+id/btn_IDcamera"
-            android:text="Sign up"
+            android:text="Create User"
             android:textSize="20dp" />
 
         <Button
