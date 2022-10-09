@@ -1,24 +1,23 @@
 package com.UlBululStudios.mad_lab;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.PersistableBundle;
-import android.provider.MediaStore;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+/*import com.UlBululStudios.mad_lab.DB_Utils.LocalDB;
+import com.UlBululStudios.mad_lab.DB_Utils.User;*/
+
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername, etPassword;
-    private Button btnLogin, btnCancle, btnTestShow;
+    private Button btnLogin, btnCancle;
     private TextView btnSignUp;
 
     private final String CREDENTIAL_SHARED_PREF = "credential_shared_pref";
@@ -33,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
         btnLogin = findViewById(R.id.btn_Login);
         btnCancle = findViewById(R.id.btn_Cancle);
         btnSignUp = findViewById(R.id.btn_signUp);
-        btnTestShow = findViewById(R.id.btn_test_show);
 
 //        String strUsername = getIntent().getStringExtra("Username");
 //
@@ -49,22 +47,35 @@ public class LoginActivity extends AppCompatActivity {
                 String strUsername = etUsername.getText().toString();
                 String strPassword = etPassword.getText().toString();
 
-                if (!strUsername.isEmpty() && !prefUsername.isEmpty() && strUsername.equalsIgnoreCase(prefUsername)) {
-                    if(!strPassword.isEmpty() && !prefPassword.isEmpty() && strPassword.equalsIgnoreCase(prefPassword)){
-                        Intent quizActivity = new Intent(LoginActivity.this, QuizActivity.class);
-                        startActivity(quizActivity);
-                    }else{
-                        etPassword.setText("");
-                        etPassword.setHintTextColor(Color.parseColor("red"));
-                        etPassword.setHint("Incorrect Password!");
-                    }
-                }
-                else{
-                    etUsername.setHintTextColor(Color.parseColor("red"));
-                    etUsername.setHint("Field Cannot be empty");
-                    etPassword.setHintTextColor(Color.parseColor("red"));
-                    etPassword.setHint("Field Cannot be empty");
-                }
+                /*new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        LocalDB dbInstance = RoomImplementation.getRoomInstance().getDbInstance();
+                        User user = dbInstance.userDao().getUserByUsername(strUsername);
+*/
+                        if (!strUsername.isEmpty() && strUsername.equalsIgnoreCase(prefUsername)) {
+                            if(!strPassword.isEmpty() && strPassword.equalsIgnoreCase(prefPassword)){
+                                /*runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {*/
+                                        Intent navigationActivity = new Intent(LoginActivity.this, NavigationActivity.class);
+                                        startActivity(navigationActivity);
+                                    /*}
+                                });*/
+                            }else{
+                                etPassword.setText("");
+                                etPassword.setHintTextColor(Color.parseColor("red"));
+                                etPassword.setHint("Incorrect Password!");
+                            }
+                        }
+                        else{
+                            etUsername.setHintTextColor(Color.parseColor("red"));
+                            etUsername.setHint("Field Cannot be empty");
+                            etPassword.setHintTextColor(Color.parseColor("red"));
+                            etPassword.setHint("Field Cannot be empty");
+                        }
+                /*    }
+                });*/
             }
         });
 
@@ -80,14 +91,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 System.exit(0);
-            }
-        });
-
-        btnTestShow.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent testActivity = new Intent(LoginActivity.this, TestActivity.class);
-                startActivity(testActivity);
             }
         });
     }

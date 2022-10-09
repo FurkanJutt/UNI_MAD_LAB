@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Mobile Application Development LAB</string>
+    <string name="app_name">Mobile Development LAB</string>
 
     <!--Question Strings-->
     <string name="q_1">Can you do it?</string>
@@ -7,5 +7,20 @@
     <string name="q_3">Are you stupid?</string>
     <string name="q_4">Are you actually stupid?</string>
     <string name="q_5">Do you know da wae?</string>
+
+    <string-array name="array_android_versions">
+        <item>Cupcake</item>
+        <item>Donut</item>
+        <item>Eclair</item>
+        <item>Froyo</item>
+        <item>GingerBread</item>
+        <item>Honeycomb</item>
+        <item>Ice Cream Sandwich</item>
+        <item>Jelly Beans</item>
+        <item>Lollipop</item>
+        <item>Marshmallow</item>
+        <item>Nougat</item>
+        <item>Oreo</item>
+    </string-array>
 
 </resources>

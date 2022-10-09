@@ -13,6 +13,9 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Toast;
 
+/*import com.UlBululStudios.mad_lab.DB_Utils.LocalDB;
+import com.UlBululStudios.mad_lab.DB_Utils.User;*/
+
 public class SignUpActivity extends AppCompatActivity {
 
     //Variables
@@ -58,6 +61,19 @@ public class SignUpActivity extends AppCompatActivity {
                         editor.putString("Username", strUsername);
                         editor.putString("Password", strPassword);
                         editor.commit();
+
+                        /*new Thread(new Runnable() {
+                            @Override
+                            public void run() {
+                                User user = new User();
+                                user.setUsername(strUsername);
+                                user.setPassword(strPassword);
+
+                                LocalDB dbInstance = RoomImplementation.getRoomInstance().getDbInstance();
+                                dbInstance.userDao().CreateUser(user);
+                            }
+                        }).start();*/
+
                         Toast.makeText(SignUpActivity.this, "SignUp Successful, Go back to Login!", Toast.LENGTH_SHORT).show();
                     }
                 }
