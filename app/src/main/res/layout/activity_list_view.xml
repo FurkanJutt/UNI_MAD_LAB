@@ -7,15 +7,14 @@
     android:padding="10dp"
     tools:context=".ListViewActivity">
 
-    <ListView
-        android:id="@+id/lv_android_versions"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_android_versions"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:tooltipText="Android Versions"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@android:layout/activity_list_item" />
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

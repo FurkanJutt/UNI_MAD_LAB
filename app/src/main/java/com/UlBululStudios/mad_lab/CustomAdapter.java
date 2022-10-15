@@ -9,59 +9,51 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.RecyclerView;
+
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
+import java.util.List;
 
-public class CustomAdapter extends BaseAdapter {
+public class CustomAdapter extends RecyclerView.Adapter<CustomHolder> {
 
-    private Context context;
-    private ArrayList<AndroidVersions> versionsList;
+    private List<AndroidVersions> versionsList;
 
-    public CustomAdapter(Context context, ArrayList<AndroidVersions> versionsList){
-        this.context = context;
+    public CustomAdapter(List<AndroidVersions> versionsList) {
         this.versionsList = versionsList;
     }
 
+    @NonNull
     @Override
-    public int getCount() {
-        if (versionsList != null && versionsList.size() > 0){
-            return versionsList.size();
-        }else{
-            return 0;
-        }
+    public CustomHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        return new CustomHolder(view);
     }
 
     @Override
-    public Object getItem(int position) {
-        return versionsList.get(position);
+    public void onBindViewHolder(@NonNull CustomHolder holder, int position) {
+        AndroidVersions android = versionsList.get(position);
+        holder.tvAndroidName.setText(android.getVerName());
+        holder.tvAndroidVer.setText(android.getVerNumber());
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
+    public int getItemCount() {
+        return versionsList.size();
     }
+}
 
-    @Override
-    public View getView(int i, View view, ViewGroup viewGroup) {
-        if (view == null) {
-            view = LayoutInflater.from(context).inflate(R.layout.item_list, viewGroup, false);
-        }
+class CustomHolder extends RecyclerView.ViewHolder {
 
-        ConstraintLayout itemListMainLayout = view.findViewById(R.id.item_list_main_layout);
-        TextView tvVerName = view.findViewById(R.id.tv_version_name);
-        TextView tvVerNumber = view.findViewById(R.id.tv_version_number);
+    TextView tvAndroidName, tvAndroidVer;
 
-        tvVerName.setText(versionsList.get(i).getVerName());
-        tvVerNumber.setText("Version " + versionsList.get(i).getVerNumber());
+    public CustomHolder(@NonNull View itemView) {
+        super(itemView);
 
-        itemListMainLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, "Clicked " + versionsList.get(i).getVerName(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        return view;
+        tvAndroidName = itemView.findViewById(R.id.tv_version_name);
+        tvAndroidVer = itemView.findViewById(R.id.tv_version_number);
     }
 }

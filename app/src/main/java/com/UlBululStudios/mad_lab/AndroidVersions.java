@@ -2,7 +2,7 @@ package com.UlBululStudios.mad_lab;
 
 public class AndroidVersions {
     private String verName;
-    private double verNumber;
+    private String verNumber;
 
     public String getVerName() {
         return verName;
@@ -12,11 +12,11 @@ public class AndroidVersions {
         this.verName = verName;
     }
 
-    public double getVerNumber() {
+    public String getVerNumber() {
         return verNumber;
     }
 
-    public void setVerNumber(double verNumber) {
+    public void setVerNumber(String verNumber) {
         this.verNumber = verNumber;
     }
 }
