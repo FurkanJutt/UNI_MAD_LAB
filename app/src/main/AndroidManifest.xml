@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MAD_LAB">
         <activity
-            android:name=".ListViewActivity"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".NavigationActivity"
@@ -28,7 +28,7 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".ListViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
