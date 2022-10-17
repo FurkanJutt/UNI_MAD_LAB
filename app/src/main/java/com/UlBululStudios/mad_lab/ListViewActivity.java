@@ -6,8 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.hardware.lights.LightState;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +20,12 @@ public class ListViewActivity extends AppCompatActivity {
 
     private RecyclerView rvAndroidVersions;
     private List<AndroidVersions> androidVersionsList = new ArrayList<>();
+    private Button btnShowList, btnAddToList;
+    private EditText etAndroidName;
+
+    ///////////////////////////////////////////
+    private int currentIndex = 0;
+    AndroidVersions version;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,8 +33,35 @@ public class ListViewActivity extends AppCompatActivity {
         setContentView(R.layout.activity_list_view);
 
         rvAndroidVersions = findViewById(R.id.rv_android_versions);
+        btnShowList = findViewById(R.id.btn_show_list);
+        btnAddToList = findViewById(R.id.btn_add_to_list);
+        etAndroidName = findViewById(R.id.et_version_name);
+
+        btnAddToList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                version = new AndroidVersions();
+                version.setVerName(etAndroidName.getText().toString()+currentIndex);
+                version.setVerNumber("4.1");
+                //for(int i =0;i<=currentIndex;i++){
+
+
+                    androidVersionsList.add(version);
+                //}
+                btnShowList.setText(String.valueOf(currentIndex));
+                currentIndex++;
+
+            }
+        });
+
         rvAndroidVersions.setLayoutManager(new LinearLayoutManager(this));
-        rvAndroidVersions.setAdapter(new CustomAdapter(getAndroidVersion()));
+        btnShowList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                rvAndroidVersions.setAdapter(new CustomAdapter(androidVersionsList));
+            }
+        });
+
     }
 
     private List<AndroidVersions> getAndroidVersion() {
@@ -76,31 +113,31 @@ public class ListViewActivity extends AppCompatActivity {
         version11.setVerName(verList[11]);
         version11.setVerNumber("11");
 
-        List<AndroidVersions> arrayList = new ArrayList<>();
-        arrayList.add(version);
-        arrayList.add(version1);
-        arrayList.add(version2);
-        arrayList.add(version3);
-        arrayList.add(version4);
-        arrayList.add(version5);
-        arrayList.add(version6);
-        arrayList.add(version7);
-        arrayList.add(version8);
-        arrayList.add(version9);
-        arrayList.add(version10);
-        arrayList.add(version11);
-        arrayList.add(version);
-        arrayList.add(version1);
-        arrayList.add(version2);
-        arrayList.add(version3);
-        arrayList.add(version4);
-        arrayList.add(version5);
-        arrayList.add(version6);
-        arrayList.add(version7);
-        arrayList.add(version8);
-        arrayList.add(version9);
-        arrayList.add(version10);
-        arrayList.add(version11);
-        return arrayList;
+        //List<AndroidVersions> arrayList = new ArrayList<>();
+        androidVersionsList.add(version);
+        androidVersionsList.add(version1);
+        androidVersionsList.add(version2);
+        androidVersionsList.add(version3);
+        androidVersionsList.add(version4);
+        androidVersionsList.add(version5);
+        androidVersionsList.add(version6);
+        androidVersionsList.add(version7);
+        androidVersionsList.add(version8);
+        androidVersionsList.add(version9);
+        androidVersionsList.add(version10);
+        androidVersionsList.add(version11);
+        androidVersionsList.add(version);
+        androidVersionsList.add(version1);
+        androidVersionsList.add(version2);
+        androidVersionsList.add(version3);
+        androidVersionsList.add(version4);
+        androidVersionsList.add(version5);
+        androidVersionsList.add(version6);
+        androidVersionsList.add(version7);
+        androidVersionsList.add(version8);
+        androidVersionsList.add(version9);
+        androidVersionsList.add(version10);
+        androidVersionsList.add(version11);
+        return androidVersionsList;
     }
 }
