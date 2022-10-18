@@ -6,10 +6,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import java.util.Locale;
 
 public class NavigationActivity extends AppCompatActivity {
 
     Button btnQuiz, btnTest, btnListView;
+    TextView tvLblUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,12 @@ public class NavigationActivity extends AppCompatActivity {
         btnQuiz = findViewById(R.id.btn_quiz);
         btnTest = findViewById(R.id.btn_test);
         btnListView = findViewById(R.id.btn_list_view);
+        tvLblUsername = findViewById(R.id.tv_lbl_username);
+
+        String strUsername = getIntent().getStringExtra("lUsername");
+        if(strUsername!=null) {
+            tvLblUsername.append(strUsername.toUpperCase(Locale.ROOT));
+        }
 
         btnListView.setOnClickListener(new View.OnClickListener() {
             @Override

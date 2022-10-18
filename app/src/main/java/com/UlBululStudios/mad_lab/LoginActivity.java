@@ -33,9 +33,10 @@ public class LoginActivity extends AppCompatActivity {
         btnCancle = findViewById(R.id.btn_Cancle);
         btnSignUp = findViewById(R.id.btn_signUp);
 
-//        String strUsername = getIntent().getStringExtra("Username");
-//
-//        etUsername.setText(strUsername);
+        /*String strUsername = getIntent().getStringExtra("sUsername");
+        if(strUsername!=null) {
+            etUsername.setText(strUsername);
+        }*/
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
                                     @Override
                                     public void run() {*/
                                         Intent navigationActivity = new Intent(LoginActivity.this, NavigationActivity.class);
+                                        navigationActivity.putExtra("lUsername", strUsername);
                                         startActivity(navigationActivity);
                                     /*}
                                 });*/
