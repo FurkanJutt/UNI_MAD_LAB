@@ -1,9 +1,13 @@
 package com.UlBululStudios.mad_lab;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.hardware.lights.LightState;
 import android.os.Bundle;
 import android.view.View;
@@ -12,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +31,7 @@ public class ListViewActivity extends AppCompatActivity {
     ///////////////////////////////////////////
     private int currentIndex = 0;
     AndroidVersions version;
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +50,6 @@ public class ListViewActivity extends AppCompatActivity {
                 version.setVerName(etAndroidName.getText().toString()+currentIndex);
                 version.setVerNumber("4.1");
                 //for(int i =0;i<=currentIndex;i++){
-
-
                     androidVersionsList.add(version);
                 //}
                 btnShowList.setText(String.valueOf(currentIndex));
@@ -58,7 +62,7 @@ public class ListViewActivity extends AppCompatActivity {
         btnShowList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                rvAndroidVersions.setAdapter(new CustomAdapter(androidVersionsList));
+                rvAndroidVersions.setAdapter(new CustomAdapter(getAndroidVersion()));
             }
         });
 
