@@ -29,6 +29,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomHolder> {
     private List<AndroidVersions> versionsList;
     private Context context;
     private int notifCount = 0;
+    private Toast toast;
 
     public CustomAdapter(List<AndroidVersions> versionsList) {
         this.versionsList = versionsList;
@@ -64,7 +65,13 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomHolder> {
                 notifManager.notify(notifCount, notifBuilder.build());
                 notifCount++;*/
 
-                Toast.makeText(view.getContext(), "Clicked! " + holder.tvAndroidName.getText().toString(), Toast.LENGTH_SHORT).show();
+                if(toast == null){
+                    toast = Toast.makeText(view.getContext(), "Clicked! " + holder.tvAndroidName.getText().toString(), Toast.LENGTH_SHORT);
+                }else {
+                    toast.cancel();
+                    toast = Toast.makeText(view.getContext(), "Clicked! " + holder.tvAndroidName.getText().toString(), Toast.LENGTH_SHORT);
+                }
+                toast.show();
             }
         });
     }

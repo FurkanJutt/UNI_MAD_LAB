@@ -58,32 +58,6 @@ public class FragmentList extends Fragment {
         rvCrimeListView.setLayoutManager(new LinearLayoutManager(fragmentView.getContext()));
         rvCrimeListView.setAdapter(new FragmentAdapter(crimeList));
 
-        rvCrimeListView.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                Toast.makeText(getContext(), "Clicked 1", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-
-            @Override
-            public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-            }
-
-            @Override
-            public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-            }
-        });
-
-        rvCrimeListView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String strItemName = ((TextView) view).getText().toString();
-                fragmentInterface.OnFragmentItemClick(strItemName);
-                Toast.makeText(getContext(), "Clicked ", Toast.LENGTH_SHORT).show();
-            }
-        });
-
         return fragmentView;
     }
 }

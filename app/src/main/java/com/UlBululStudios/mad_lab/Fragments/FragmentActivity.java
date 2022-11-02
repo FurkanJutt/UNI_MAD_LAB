@@ -18,6 +18,7 @@ public class FragmentActivity extends AppCompatActivity implements FragmentInter
 
     private FragmentManager fragmentManager;
     private List<Crimes> crimeList = new ArrayList<>();
+    private Toast toast;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +27,7 @@ public class FragmentActivity extends AppCompatActivity implements FragmentInter
 
         fragmentManager = getSupportFragmentManager();
 
-
-        // Adding first fragment manually no need to do this if you have added through xml directly
+        // Adding first fragment manually, no need to do this if you have added through xml directly
         /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentAdapter fragmentAdapter = new FragmentAdapter();
         fragmentTransaction.add(fragmentContainer.getId(), fragmentAdapter);
@@ -48,6 +48,12 @@ public class FragmentActivity extends AppCompatActivity implements FragmentInter
         fragmentTransaction.replace(R.id.fl_fragment_container, detailFragment);
         fragmentTransaction.commit();
 
-        Toast.makeText(this, "Clicked " + name, Toast.LENGTH_SHORT).show();
+        if(toast == null){
+            toast = Toast.makeText(this, "Clicked " + name, Toast.LENGTH_SHORT);
+        }else {
+            toast.cancel();
+            toast = Toast.makeText(this, "Clicked " + name, Toast.LENGTH_SHORT);
+        }
+        toast.show();
     }
 }

@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -16,6 +17,8 @@ import com.UlBululStudios.mad_lab.R;
 public class DetailFragment extends Fragment {
 
     private TextView tvBtnBackToCriminalList, detailText;
+    private CheckBox cbIsCrimeSolved;
+    private Crimes crime;
 
     @Nullable
     @Override
@@ -25,6 +28,7 @@ public class DetailFragment extends Fragment {
 
         detailText = detailView.findViewById(R.id.tv_fragment_detail);
         tvBtnBackToCriminalList = detailView.findViewById(R.id.tv_btn_back_to_criminal_list);
+        cbIsCrimeSolved = detailView.findViewById(R.id.cb_is_crime_solved);
 
         if (getArguments() != null && getArguments().getString("ItemName") != null){
             detailText.setText(getArguments().getString("ItemName"));
@@ -33,6 +37,10 @@ public class DetailFragment extends Fragment {
         tvBtnBackToCriminalList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(cbIsCrimeSolved.isChecked()){
+                    FragmentAdapter fragmentAdapter = new FragmentAdapter();
+                    fragmentAdapter.SetCrimeIsSolved(true);
+                }
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_fragment_container, FragmentList.class, null)
