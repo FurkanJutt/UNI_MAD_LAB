@@ -1,31 +1,37 @@
-package com.UlBululStudios.mad_lab;
+package com.UlBululStudios.mad_lab.Fragments;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 import android.widget.Toast;
+
+import com.UlBululStudios.mad_lab.R;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FragmentActivity extends AppCompatActivity implements FragmentInterface{
 
-    private FrameLayout fragmentContainer;
     private FragmentManager fragmentManager;
+    private List<Crimes> crimeList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment);
 
-        fragmentContainer = findViewById(R.id.fl_fragment_container);
-
         fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
+
+        // Adding first fragment manually no need to do this if you have added through xml directly
+        /*FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         FragmentAdapter fragmentAdapter = new FragmentAdapter();
         fragmentTransaction.add(fragmentContainer.getId(), fragmentAdapter);
-        fragmentTransaction.commit();
+        fragmentTransaction.commit();*/
 
     }
 
@@ -39,7 +45,7 @@ public class FragmentActivity extends AppCompatActivity implements FragmentInter
         DetailFragment detailFragment = new DetailFragment();
         detailFragment.setArguments(bundle);
 
-        fragmentTransaction.replace(R.id.fl_fragment_detail_container, detailFragment);
+        fragmentTransaction.replace(R.id.fl_fragment_container, detailFragment);
         fragmentTransaction.commit();
 
         Toast.makeText(this, "Clicked " + name, Toast.LENGTH_SHORT).show();
