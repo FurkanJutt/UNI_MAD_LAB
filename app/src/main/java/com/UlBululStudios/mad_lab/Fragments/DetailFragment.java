@@ -7,12 +7,15 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.UlBululStudios.mad_lab.R;
+
+import java.util.List;
 
 public class DetailFragment extends Fragment {
 
@@ -38,9 +41,11 @@ public class DetailFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if(cbIsCrimeSolved.isChecked()){
-                    FragmentAdapter fragmentAdapter = new FragmentAdapter();
-                    fragmentAdapter.SetCrimeIsSolved(true);
+                    Crimes._getInstance().setIsSolved(true);
+                }else{
+                    Crimes._getInstance().setIsSolved(false);
                 }
+
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction()
                         .replace(R.id.fl_fragment_container, FragmentList.class, null)

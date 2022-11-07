@@ -23,10 +23,6 @@ public class FragmentAdapter extends RecyclerView.Adapter<FragmentHolder> {
     private List<Crimes> crimeList;
     private Crimes crime;
 
-    public FragmentAdapter() {
-
-    }
-
     public FragmentAdapter(List<Crimes> crimeList) {
         if(crimeList != null)
             this.crimeList = crimeList;
@@ -54,7 +50,7 @@ public class FragmentAdapter extends RecyclerView.Adapter<FragmentHolder> {
         if(crimeList != null){
             crime = crimeList.get(position);
             holder.tvCrime.setText(crime.getCrimeComited());
-            holder.cbCrimeIsSolved.setChecked(crime.getIsSolved());
+            holder.cbCrimeIsSolved.setChecked(Crimes._getInstance().getIsSolved());
 
             holder.crimeListMainLayout.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -66,9 +62,9 @@ public class FragmentAdapter extends RecyclerView.Adapter<FragmentHolder> {
         }
     }
 
-    public void SetCrimeIsSolved(Boolean isSolved){
+    /*public void SetCrimeIsSolved(Boolean isSolved){
         crime.setIsSolved(isSolved);
-    }
+    }*/
 
     @Override
     public int getItemCount() {

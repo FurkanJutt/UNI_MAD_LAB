@@ -5,7 +5,16 @@ import java.util.UUID;
 public class Crimes {
     private UUID criminalID;
     private String crimeComited ,criminalName, crimeDetail;
-    private Boolean isSolved;
+    private Boolean isSolved = false;
+
+    // Singleton Instance -> will not be destroyed
+    private static Crimes _crimeInstance;
+    public static synchronized Crimes _getInstance() {
+        if(_crimeInstance == null){
+            _crimeInstance = new Crimes();
+        }
+        return _crimeInstance;
+    }
 
     public Boolean getIsSolved() {
         return isSolved;

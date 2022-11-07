@@ -17,7 +17,6 @@ import java.util.List;
 public class FragmentActivity extends AppCompatActivity implements FragmentInterface{
 
     private FragmentManager fragmentManager;
-    private List<Crimes> crimeList = new ArrayList<>();
     private Toast toast;
 
     @Override

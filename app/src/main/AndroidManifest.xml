@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MAD_LAB">
         <activity
-            android:name=".LoginActivity"
+            android:name=".Fragments.FragmentActivity"
             android:exported="false" />
         <activity
             android:name=".ListViewActivity"
@@ -31,7 +31,7 @@
             android:name=".SignUpActivity"
             android:exported="false" />
         <activity
-            android:name=".Fragments.FragmentActivity"
+            android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -50,7 +50,6 @@ public class FragmentList extends Fragment {
             String[] verList = getResources().getStringArray(R.array.array_android_versions);
             Crimes crime = new Crimes();
             crime.setCrimeComited(verList[i]);
-            crime.setIsSolved(false);
             crimeList.add(crime);
         }
 
